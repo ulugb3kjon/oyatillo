@@ -9,7 +9,7 @@ document.getElementById('fileInput').addEventListener('change', function(e) {
     reader.onload = function(event) {
         questions = parseQuestions(event.target.result);
         updateQuestionsList();
-        document.getElementById('fileStatus').innerHTML = 
+        document.getElementById('fileStatus').innerHTML =
             `<div style="color:green; margin-top:10px;">✅ ${questions.length} ta savol yuklandi!</div>`;
     };
 
@@ -22,14 +22,14 @@ function parseQuestions(content) {
             .map(l => l.trim())
             .filter(l => l);
 
-        if(lines.length < 2) return null;
+        if (lines.length < 2) return null;
 
         const question = lines[0];
         let correct = '';
         const options = [];
 
-        for(let i = 1; i < lines.length; i++) {
-            if(lines[i].startsWith('#')) {
+        for (let i = 1; i < lines.length; i++) {
+            if (lines[i].startsWith('#')) {
                 correct = lines[i].substring(1).trim();
                 options.push(correct);
             } else {
@@ -37,7 +37,7 @@ function parseQuestions(content) {
             }
         }
 
-        while(options.length < 4) options.push("...");
+        while (options.length < 4) options.push("...");
 
         return {
             question,
@@ -50,7 +50,7 @@ function parseQuestions(content) {
 function updateQuestionsList() {
     const menu = document.getElementById('questionMenu');
     menu.innerHTML = '';
-    
+
     questions.forEach((_, i) => {
         const div = document.createElement('div');
         div.className = 'question-number';
@@ -60,18 +60,21 @@ function updateQuestionsList() {
 }
 
 function startQuiz() {
-    const total = Math.min(
-        parseInt(document.getElementById('questionCount').value),
-        questions.length
-    );
+    let selectedCount = document.getElementById('questionCount').value;
     const time = parseInt(document.getElementById('timerSelect').value);
 
-    if(!total || total < 1) {
-        alert("Savollar sonini kiriting!");
+    if (selectedCount === 'all') {
+        selectedCount = questions.length;
+    } else {
+        selectedCount = parseInt(selectedCount);
+    }
+
+    if (!selectedCount || selectedCount < 1) {
+        alert("Savollar sonini tanlang!");
         return;
     }
 
-    const shuffledQuestions = shuffle(questions).slice(0, total);
+    const shuffledQuestions = shuffle([...questions]).slice(0, selectedCount);
 
     quizData = {
         questions: shuffledQuestions,
@@ -113,17 +116,17 @@ function selectAnswer(selected, index, target) {
     const options = document.querySelectorAll('.option');
     options.forEach(opt => {
         opt.style.pointerEvents = 'none';
-        if(opt.textContent === q.correct) {
+        if (opt.textContent === q.correct) {
             opt.classList.add('correct');
-        } else if(opt.textContent === selected && !isCorrect) {
+        } else if (opt.textContent === selected && !isCorrect) {
             opt.classList.add('wrong');
         }
     });
 
-    if(isCorrect) quizData.correct++;
+    if (isCorrect) quizData.correct++;
 
     setTimeout(() => {
-        if(index < quizData.questions.length - 1) {
+        if (index < quizData.questions.length - 1) {
             showQuestion(index + 1);
         } else {
             endQuiz();
@@ -139,10 +142,10 @@ function startTimer(seconds) {
     timerInterval = setInterval(() => {
         const mins = Math.floor(time / 60);
         const secs = time % 60;
-        document.getElementById('timer').textContent = 
+        document.getElementById('timer').textContent =
             `${mins}:${secs.toString().padStart(2, '0')}`;
 
-        if(time <= 0) {
+        if (time <= 0) {
             clearInterval(timerInterval);
             endQuiz();
             return;
@@ -157,7 +160,7 @@ function endQuiz() {
 }
 
 function shuffle(array) {
-    for(let i = array.length - 1; i > 0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }

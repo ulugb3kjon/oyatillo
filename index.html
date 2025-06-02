@@ -2,17 +2,17 @@
 <html lang="uz">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Test Platforma</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="container">
         <div class="sidebar">
             <div class="file-upload">
-                <input type="file" id="fileInput" accept=".txt">
+                <input type="file" id="fileInput" accept=".txt" />
                 <label for="fileInput">📂 Test faylini tanlang</label>
                 <div id="fileStatus"></div>
             </div>
@@ -20,18 +20,20 @@
             <div class="settings">
                 <label>Savollar soni:</label>
                 <select id="questionCount">
-                    <option value="5">5 ta</option>
                     <option value="10">10 ta</option>
                     <option value="20">20 ta</option>
                     <option value="50">50 ta</option>
+                    <option value="100">100 ta</option>
+                    <option value="all">Hammasi</option>
                 </select>
 
                 <label>Vaqt (daqiqada):</label>
                 <select id="timerSelect">
                     <option value="1">1 daqiqa</option>
-                    <option value="3">3 daqiqa</option>
                     <option value="5">5 daqiqa</option>
-                    <option value="10">10 daqiqa</option>
+                    <option value="15">15 daqiqa</option>
+                    <option value="30">30 daqiqa</option>
+                    <option value="45">45 daqiqa</option>
                 </select>
             </div>
 
@@ -48,14 +50,15 @@
 
             <div id="questionText" class="question">Savol matni...</div>
             <div id="optionsContainer" class="options"></div>
-            <hr>
+            <hr />
             <div class="oyatillo_blok">
                 <h2 class="oyatillo">Oyatillo Erkinov</h2>
-                <br>
+                <br />
                 <a class="kanal_suka" target="_blank" href="https://t.me/Fanilo_Tv">Fanilo Tv</a>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
