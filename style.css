@@ -201,7 +201,7 @@ button:hover {
   background-color: #727fbb;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-radius: 10px;
 }
 
@@ -257,8 +257,8 @@ button:hover {
 
   .main-content {
     padding: 10px;
-    max-height: 1000vh;
-    overflow-y: hidden;
+    max-height: 55vh;
+    overflow-y: auto;
   }
 
   .question {
