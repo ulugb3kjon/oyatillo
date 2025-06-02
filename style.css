@@ -131,13 +131,14 @@ button:hover {
 
 .question {
   font-size: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   color: #2c3e50;
 }
 
 .options {
   display: grid;
   gap: 15px;
+  margin-bottom: 20px;
 }
 
 .option {
@@ -145,8 +146,8 @@ button:hover {
   border: 2px solid var(--primary);
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s;
   background: rgba(74, 144, 226, 0.05);
+  transition: all 0.3s;
 }
 
 .option:hover {
@@ -163,10 +164,11 @@ button:hover {
   background: var(--wrong);
   border-color: #e74c3c;
 }
-.oyatillo_blok {
-  margin-top: auto;
-  margin-bottom: 0;
+
+.option.clicked {
+  animation: scaleUp 0.3s ease;
 }
+
 @keyframes scaleUp {
   0% {
     transform: scale(1);
@@ -179,57 +181,57 @@ button:hover {
   }
 }
 
-.option.clicked {
-  animation: scaleUp 0.3s ease;
+.oyatillo_blok {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 10px;
 }
+
 .oyatillo {
   font-weight: 300;
   font-size: larger;
   color: #2b2929;
 }
+
 .kanal_suka {
   text-decoration: none;
   cursor: pointer;
   font-weight: 600;
   color: #ffffff;
+  background-color: #727fbb;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 8px;
-  margin-bottom: 20px;
-  background-color: #727fbb;
+  margin-bottom: 30px;
   border-radius: 10px;
 }
-.options{
-    margin-bottom: 20px;
-}
-.question{
-    margin-bottom: 10px;
-}
-.oyatillo_blok{
-    padding: 10px;
-}
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
   .container {
-    height: auto;
     flex-wrap: wrap;
+    height: auto;
     padding: 15px;
   }
+
   .sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding: 15px;
     max-height: 300px;
-    overflow-y: auto;
+    margin-bottom: 20px;
   }
+
   .questions-list {
     grid-template-columns: repeat(4, 1fr);
     max-height: 150px;
     overflow-y: auto;
   }
+
   .main-content {
     padding: 15px;
   }
+
   .question {
     font-size: 20px;
     margin-bottom: 20px;
@@ -240,36 +242,32 @@ button:hover {
   .container {
     flex-direction: column;
     height: auto;
+    max-height: 1000px;
   }
+
   .sidebar {
-    max-height: 200px;
+    max-height: 1000px;
     padding: 15px;
+    overflow-y: auto;
   }
+
   .questions-list {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .main-content {
     padding: 10px;
+    max-height: 1000vh;
+    overflow-y: hidden;
   }
+
   .question {
     font-size: 18px;
     margin-bottom: 15px;
   }
+
   .option {
     font-size: 14px;
     padding: 12px;
-  }
-  .container {
-    flex-direction: column;
-    height: auto;
-    max-height: 1000px;
-  }
-  .sidebar {
-    max-height: 1000px;
-    overflow-y: auto;
-  }
-  .main-content {
-    max-height: 55vh;
-    overflow-y: auto;
   }
 }
